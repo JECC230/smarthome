@@ -1,0 +1,371 @@
+
+:root {
+    --bg-color: #000000;         
+    --card-bg: #1c1c1e;          
+    --input-bg: #2c2c2e;          
+    --text-primary: #f5f5f7;     
+    --text-secondary: #86868b;    
+    --accent-blue: #0A84FF;     
+    --accent-red: #FF453A;        
+    --accent-green: #30D158;     
+    --border-radius: 14px;
+    --border-light: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    padding: 20px;
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 600px; /* Ancho optimizado para parecer App Móvil */
+    margin: 0 auto;
+    padding-bottom: 40px;
+}
+
+/* --- HEADER --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-top: 10px;
+}
+
+h1 {
+    font-size: 34px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: -5px;
+}
+
+.user-avatar {
+    background: linear-gradient(135deg, #0A84FF 0%, #0056b3 100%);
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    box-shadow: 0 4px 10px rgba(10, 132, 255, 0.3);
+}
+
+/* --- TARJETAS Y PANELES --- */
+.card {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin-bottom: 25px;
+    border: 1px solid var(--border-light);
+}
+
+/* Efecto Glassmorphism (Opcional, si el navegador lo soporta) */
+.glass-panel {
+    background: rgba(28, 28, 30, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+/* --- FORMULARIOS E INPUTS --- */
+.input-group {
+    margin-bottom: 12px;
+}
+
+/* Estilo unificado para Input y Select */
+input, select, textarea {
+    width: 100%;
+    background-color: var(--input-bg);
+    border: 1px solid transparent;
+    border-radius: 10px;
+    padding: 14px 16px;
+    color: white;
+    font-size: 17px;
+    transition: all 0.2s;
+    appearance: none; /* Reset nativo */
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    background-color: #3a3a3c;
+}
+
+/* Flecha personalizada para el Select */
+select {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2386868b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1.2em;
+    padding-right: 2.5rem;
+}
+
+.row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.row input {
+    margin-bottom: 0;
+}
+
+/* --- BOTONES --- */
+.apple-button {
+    width: 100%;
+    background-color: var(--accent-blue);
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 12px;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.1s, opacity 0.2s;
+    margin-top: 5px;
+}
+
+.apple-button:active {
+    transform: scale(0.98);
+    opacity: 0.85;
+}
+
+/* --- SECCIÓN DE FILTROS --- */
+.header-section-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    margin-top: 30px;
+}
+
+.section-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* Select pequeño para filtros */
+.apple-select-small {
+    width: auto;
+    padding: 8px 30px 8px 12px;
+    font-size: 14px;
+    background-color: var(--card-bg);
+    color: var(--accent-blue);
+    font-weight: 600;
+    border: none;
+    background-size: 1em; /* Flecha más pequeña */
+}
+
+/* --- LISTA DE PRODUCTOS --- */
+.grid-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.producto-card {
+    background-color: var(--card-bg);
+    padding: 16px;
+    border-radius: var(--border-radius);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgba(255,255,255,0.05);
+    cursor: pointer; /* Indica que es clickeable */
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.producto-card:hover {
+    background-color: #252528;
+}
+
+.producto-card:active {
+    transform: scale(0.98);
+}
+
+.producto-info strong {
+    display: block;
+    font-size: 17px;
+    margin-bottom: 2px;
+}
+
+.producto-info small {
+    color: var(--text-secondary);
+    font-size: 14px;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.stock-badge {
+    font-size: 13px;
+    background: #2c2c2e;
+    color: #eebb00; /* Color amigable para stock */
+    padding: 4px 10px;
+    border-radius: 6px;
+    display: inline-block;
+    font-weight: 600;
+}
+
+/* Estado de alerta: Stock bajo */
+.bajo-stock {
+    border-left: 4px solid var(--accent-red);
+}
+
+.bajo-stock .stock-badge {
+    color: var(--accent-red);
+    background: rgba(255, 69, 58, 0.1);
+}
+
+/* Botón Eliminar (Círculo rojo) */
+.btn-delete {
+    background: rgba(255, 69, 58, 0.1);
+    color: var(--accent-red);
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.btn-delete:hover {
+    background: var(--accent-red);
+    color: white;
+}
+
+/* --- LOADING --- */
+.loading {
+    text-align: center;
+    color: var(--text-secondary);
+    padding: 20px;
+    font-size: 15px;
+}
+
+/* --- MODAL (VENTANA EMERGENTE) --- */
+.modal-overlay {
+    position: fixed;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+/* Clase utilitaria para ocultar elementos */
+.hidden {
+    display: none !important;
+    opacity: 0;
+}
+
+.modal-content {
+    background: #1c1c1e;
+    width: 90%;
+    max-width: 380px;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+    border: 1px solid var(--border-light);
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-content h3 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 20px;
+}
+
+.modal-content label {
+    display: block;
+    color: var(--text-secondary);
+    font-size: 13px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+}
+
+/* Botones de Cantidad (+ / -) */
+.btn-qty {
+    width: 50px;
+    background: #3a3a3c;
+    color: var(--accent-blue);
+    border: none;
+    border-radius: 10px;
+    font-size: 22px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-qty:active {
+    background: #48484a;
+}
+
+/* Input central del modal (texto centrado) */
+#edit-stock {
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.btn-cancel {
+    flex: 1;
+    background: transparent;
+    color: var(--accent-red);
+    border: 1px solid var(--accent-red); /* Borde rojo fino */
+    padding: 14px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-cancel:hover {
+    background: rgba(255, 69, 58, 0.1);
+}

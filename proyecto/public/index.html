@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gestión de inventario SmartHome.">
+    <title>SmartHome - Despensa</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1>Despensa</h1>
+                <p class="subtitle">Gestión Inteligente</p>
+            </div>
+            <div class="user-avatar">JECC</div>
+        </header>
+
+        <main>
+            <section class="card glass-panel">
+                <h2>Nuevo Producto</h2>
+                <form id="form-producto">
+                    <div class="input-group">
+                        <input type="text" id="nombre" placeholder="Nombre (ej. Leche)" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <select id="categoria" required class="apple-select">
+                            <option value="" disabled selected>Selecciona una Categoría</option>
+                            <option value="Lácteos">🥛 Lácteos</option>
+                            <option value="Frutas y Verduras">🍎 Frutas y Verduras</option>
+                            <option value="Carnes">🥩 Carnes</option>
+                            <option value="Bebidas">🥤 Bebidas</option>
+                            <option value="Limpieza">🧹 Limpieza</option>
+                            <option value="Granos y Pastas">🍝 Granos y Pastas</option>
+                            <option value="Snacks">🍪 Snacks</option>
+                            <option value="Otros">📦 Otros</option>
+                        </select>
+                    </div>
+
+                    <div class="row">
+                        <input type="number" id="stock" placeholder="Stock" required min="0">
+                        <input type="number" id="stockMinimo" placeholder="Mínimo" required min="1">
+                    </div>
+                    <button type="submit" class="apple-button">Agregar</button>
+                </form>
+            </section>
+
+            <section>
+                <div class="header-section-row">
+                    <h2 class="section-title">Inventario</h2>
+                    <select id="filtro-categoria" class="apple-select-small" onchange="aplicarFiltros()">
+                        <option value="todos">Todas las categorías</option>
+                        <option value="Lácteos">Lácteos</option>
+                        <option value="Frutas y Verduras">Frutas y Verduras</option>
+                        <option value="Carnes">Carnes</option>
+                        <option value="Bebidas">Bebidas</option>
+                        <option value="Limpieza">Limpieza</option>
+                        <option value="Granos y Pastas">Granos y Pastas</option>
+                        <option value="Snacks">Snacks</option>
+                        <option value="Otros">Otros</option>
+                    </select>
+                </div>
+
+                <div id="lista-productos" class="grid-layout">
+                    <div class="loading">Cargando...</div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="modal-edicion" class="modal-overlay hidden">
+        <div class="modal-content glass-panel">
+            <h3>Editar Producto</h3>
+            <form id="form-editar">
+                <input type="hidden" id="edit-id"> <label>Nombre:</label>
+                <input type="text" id="edit-nombre" required>
+                
+                <label>Stock Actual:</label>
+                <div class="row">
+                    <button type="button" class="btn-qty" onclick="ajustarStock(-1)">-</button>
+                    <input type="number" id="edit-stock" required min="0" style="text-align:center;">
+                    <button type="button" class="btn-qty" onclick="ajustarStock(1)">+</button>
+                </div>
+
+                <label>Stock Mínimo (Alerta):</label>
+                <input type="number" id="edit-stockMinimo" required min="1">
+
+                <div class="modal-actions">
+                    <button type="button" class="btn-cancel" onclick="cerrarModal()">Cancelar</button>
+                    <button type="submit" class="apple-button">Guardar Cambios</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="frontend.js"></script>
+</body>
+</html>
